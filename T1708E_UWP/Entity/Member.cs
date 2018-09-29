@@ -8,18 +8,18 @@ namespace T1708E_UWP.Entity
 {
     class Member
     {
-        private string _firtName;
+        private string _firstName;
         private string _lastName;
         private string _avatar;
         private string _phone;
         private string _address;
         private string _introduction;
-        private int _gender;
+        private int _gender = 1;
         private string _birthday;
         private string _email;
         private string _password;
 
-        public string firtName { get => _firtName; set => _firtName = value; }
+        public string firstName { get => _firstName; set => _firstName = value; }
         public string lastName { get => _lastName; set => _lastName = value; }
         public string avatar { get => _avatar; set => _avatar = value; }
         public string phone { get => _phone; set => _phone = value; }

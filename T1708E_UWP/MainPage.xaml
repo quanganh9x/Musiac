@@ -14,16 +14,19 @@
             <TextBox x:Name="FirstName" Margin="0, 30, 0, 0" Header="First Name" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="293"/>
             <TextBox x:Name="LastName" Margin="0, 30, 0, 0" Header="Last Name" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="293"/>
             <TextBox x:Name="ImageUrl" Margin="0, 30, 0, 0" Header="Avatar Url" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="293"/>
+            <Image x:Name="MyAvatar" Width="150" Height="150" Source="http://lh3.googleusercontent.com/7gypLnKdOL1IFBKOWypxE7PRhbU-gYELSoM3jd2xZeXIDbtQZtEYuMz-5p6Md5XvVi5BjPNWGZYrQm6lu8cfIqibrnzh2A"/>
             <Button Content="Capture Your Photo" Margin="0, 30, 0, 0" Click="Capture_Photo" />
             <TextBox x:Name="Phone" Margin="0, 30, 0, 0" Header="Phone Number" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="293"/>
-            <RichEditBox x:Name="Address" Margin="0, 30, 0, 0" Header="Address" HorizontalAlignment="Left" VerticalAlignment="Top" Width="293" Height="100"/>
-            <RichEditBox x:Name="Introduction" Margin="0, 30, 0, 0" Header="Introduction" HorizontalAlignment="Left" VerticalAlignment="Top" Width="293" Height="100"/>
-            <ComboBox x:Name="Gender" Margin="0, 30, 0, 0" Header="Gender" PlaceholderText="Choose Your Gender" Width="200">
-                <x:Int32>1</x:Int32>
-                <x:Int32>2</x:Int32>
-                <x:Int32>0</x:Int32>
-            </ComboBox>
-            <CalendarDatePicker x:Name="BirthDay" Header="Birthday" Margin="0, 30, 0, 0"/>
+            <TextBox AcceptsReturn="True" x:Name="Address" Margin="0, 30, 0, 0" Header="Address" HorizontalAlignment="Left" VerticalAlignment="Top" Width="293" Height="100"/>
+            <TextBox AcceptsReturn="True" x:Name="Introduction" Margin="0, 30, 0, 0" Header="Introduction" HorizontalAlignment="Left" VerticalAlignment="Top" Width="293" Height="100"/>
+            <TextBlock Text="Gender" Margin="0, 30, 0, 0"/>
+                        
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Content="Male" Tag="1" Checked="Select_Gender"/>
+                <RadioButton Content="Female" Tag="0" Checked="Select_Gender"/>
+                <RadioButton Content="Other" Tag="2" Checked="Select_Gender" IsChecked="True"/>
+            </StackPanel>
+            <CalendarDatePicker x:Name="BirthDay" Header="Birthday" Margin="0, 30, 0, 0" DateChanged="Change_Birthday"/>
             <Button x:Name="BtnSignup" Margin="0, 30, 0, 0" Content="Sign Up" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Handle_Signup"/>
             <Button x:Name="BtnReset" Margin="0, 30, 0, 0" Content="Reset" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         </StackPanel>
