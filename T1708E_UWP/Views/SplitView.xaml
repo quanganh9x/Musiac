@@ -11,7 +11,7 @@
         <SplitView x:Name="MySplitView" IsPaneOpen="False" DisplayMode="CompactOverlay" CompactPaneLength="50" OpenPaneLength="250">
             <SplitView.Pane>
                 <StackPanel x:Name="StackIcon" Margin="10, 50, 0, 0">
-                    <RadioButton Style="{ThemeResource TextBlockButtonStyle}" Margin="0, 0, 0, 10" Click="RadioButton_Click">
+                    <RadioButton Tag="Register" Style="{ThemeResource TextBlockButtonStyle}" Margin="0, 0, 0, 10" Click="RadioButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Home" Margin="0, 0, 15, 0"/>
                             <TextBlock Text="Home" Margin="0, 3, 0, 0"/>
@@ -29,7 +29,7 @@
                             <TextBlock Text="My Account" Margin="0, 3, 0, 0"/>
                         </StackPanel>
                     </RadioButton>
-                    <RadioButton Style="{ThemeResource TextBlockButtonStyle}" Margin="0, 0, 0, 10">
+                    <RadioButton Tag="CreateSong" Style="{ThemeResource TextBlockButtonStyle}" Margin="0, 0, 0, 10" Click="RadioButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Audio" Margin="0, 0, 15, 0"/>
                             <TextBlock Text="My Song" Margin="0, 3, 0, 0"/>

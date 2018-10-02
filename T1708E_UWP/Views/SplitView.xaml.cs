@@ -42,7 +42,18 @@ namespace T1708E_UWP.Views
 
         private void RadioButton_Click(object sender, RoutedEventArgs e)
         {
-            this.MainFrame.Navigate(typeof(MainPage));
+            RadioButton radio = sender as RadioButton;
+            switch (radio.Tag.ToString()) {
+                case "Register":
+                    this.MainFrame.Navigate(typeof(MainPage));
+                    break;
+                case "CreateSong":
+                    this.MainFrame.Navigate(typeof(Views.SongForm));
+                    break;
+                default:
+                    break;
+            }
+            
         }
     }
 }
