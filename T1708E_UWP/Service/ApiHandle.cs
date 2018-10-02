@@ -13,12 +13,13 @@ namespace T1708E_UWP.Service
     class ApiHandle
     {
         private static string API_URL = "http://1-dot-backup-server-002.appspot.com/member/register";
-        public static bool Sign_Up(Member member) {
+        public async static Task<string> Sign_Up(Member member) {
             HttpClient httpClient = new HttpClient();
             var content = new StringContent(JsonConvert.SerializeObject(member), System.Text.Encoding.UTF8, "application/json");
-            var result = httpClient.PostAsync(API_URL, content).Result;
-            Debug.WriteLine(result);
-            return true;
+            var response = httpClient.PostAsync(API_URL, content);
+            var contents = await response.Result.Content.ReadAsStringAsync();
+            Debug.WriteLine(contents);
+            return contents;
         }
     }
 }

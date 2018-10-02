@@ -42,7 +42,7 @@ namespace T1708E_UWP
             this.InitializeComponent();
         }
 
-        private void Handle_Signup(object sender, RoutedEventArgs e)
+        private async void Handle_Signup(object sender, RoutedEventArgs e)
         {
             // do validate first.
             this.currentMember.firstName = this.FirstName.Text;
@@ -53,9 +53,8 @@ namespace T1708E_UWP
             this.currentMember.phone = this.Phone.Text;
             this.currentMember.address = this.Address.Text;
             this.currentMember.introduction = this.Introduction.Text;
-            if (ApiHandle.Sign_Up(this.currentMember)) {
-                Debug.WriteLine("Action success.");
-            }
+            await ApiHandle.Sign_Up(this.currentMember);
+            Debug.WriteLine("Action success.");
         }
 
         private async void Capture_Photo(object sender, RoutedEventArgs e)
@@ -126,10 +125,11 @@ namespace T1708E_UWP
                 wresp = await wr.GetResponseAsync();
                 Stream stream2 = wresp.GetResponseStream();
                 StreamReader reader2 = new StreamReader(stream2);
-                Debug.WriteLine(string.Format("File uploaded, server response is: @{0}@", reader2.ReadToEnd()));
-                string imgUrl = reader2.ReadToEnd();
-                Uri u = new Uri(imgUrl, UriKind.Absolute);
+                //Debug.WriteLine(string.Format("File uploaded, server response is: @{0}@", reader2.ReadToEnd()));
+                //string imgUrl = reader2.ReadToEnd();
+                Uri u = new Uri(reader2.ReadToEnd(), UriKind.Absolute);
                 Debug.WriteLine(u.AbsoluteUri);
+                ImageUrl.Text = u.AbsoluteUri;
                 MyAvatar.Source = new BitmapImage(u);
             }
             catch (Exception ex)

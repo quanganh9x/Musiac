@@ -14,7 +14,9 @@
             <TextBox x:Name="FirstName" Margin="0, 30, 0, 0" Header="First Name" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="293"/>
             <TextBox x:Name="LastName" Margin="0, 30, 0, 0" Header="Last Name" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="293"/>
             <TextBox x:Name="ImageUrl" Margin="0, 30, 0, 0" Header="Avatar Url" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="293"/>
-            <Image x:Name="MyAvatar" Width="150" Height="150" Source="http://lh3.googleusercontent.com/7gypLnKdOL1IFBKOWypxE7PRhbU-gYELSoM3jd2xZeXIDbtQZtEYuMz-5p6Md5XvVi5BjPNWGZYrQm6lu8cfIqibrnzh2A"/>
+            
+            <Image x:Name="MyAvatar" Width="150" Height="150"/>
+           
             <Button Content="Capture Your Photo" Margin="0, 30, 0, 0" Click="Capture_Photo" />
             <TextBox x:Name="Phone" Margin="0, 30, 0, 0" Header="Phone Number" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="293"/>
             <TextBox AcceptsReturn="True" x:Name="Address" Margin="0, 30, 0, 0" Header="Address" HorizontalAlignment="Left" VerticalAlignment="Top" Width="293" Height="100"/>
