@@ -22,6 +22,8 @@ using T1708E_UWP.Service;
 using System.Net;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Storage.Streams;
+using Windows.Storage.Provider;
+using Windows.Storage.Pickers;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -157,6 +159,17 @@ namespace T1708E_UWP
         private void Change_Birthday(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
         {
             this.currentMember.birthday = sender.Date.Value.ToString("yyyy-MM-dd");
+        }
+
+        private async void BtnReset_Click(object sender, RoutedEventArgs e)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Basic X3a2ysfsOPIQrm7YnzzGextV9LFStCfEVcqylA6ucNRFRJUtlMOvk8CFdxS340YM");
+
+            //var content = new StringContent(JsonConvert.SerializeObject(member), System.Text.Encoding.UTF8, "application/json");
+            var response = httpClient.GetAsync("https://2-dot-backup-server-002.appspot.com/_api/v2/members/information");
+            var contents = await response.Result.Content.ReadAsStringAsync();
+            Debug.WriteLine(contents);
         }
     }
 }

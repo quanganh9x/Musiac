@@ -95,8 +95,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Entity\ErrorResponse.cs" />
     <Compile Include="Entity\Member.cs" />
     <Compile Include="Entity\Song.cs" />
+    <Compile Include="Entity\TokenResponse.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -104,6 +106,9 @@
     <Compile Include="Service\ApiHandle.cs" />
     <Compile Include="Views\DemoGrid.xaml.cs">
       <DependentUpon>DemoGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginForm.xaml.cs">
+      <DependentUpon>LoginForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NavigationView.xaml.cs">
       <DependentUpon>NavigationView.xaml</DependentUpon>
@@ -122,6 +127,7 @@
     <None Include="T1708E_UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\1708e.txt" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -141,6 +147,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\DemoGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

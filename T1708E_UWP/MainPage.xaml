@@ -30,7 +30,7 @@
             </StackPanel>
             <CalendarDatePicker x:Name="BirthDay" Header="Birthday" Margin="0, 30, 0, 0" DateChanged="Change_Birthday"/>
             <Button x:Name="BtnSignup" Margin="0, 30, 0, 0" Content="Sign Up" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Handle_Signup"/>
-            <Button x:Name="BtnReset" Margin="0, 30, 0, 0" Content="Reset" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button x:Name="BtnReset" Margin="0, 30, 0, 0" Content="Reset" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnReset_Click"/>
         </StackPanel>
     </ScrollViewer>
    
