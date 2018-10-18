@@ -12,12 +12,13 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17134.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <PackageCertificateKeyFile>T1708E_UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>FC0F837C27230654DA5F0F38F2B2697778C0BFCC</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -95,18 +96,27 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Entity\ErrorResponse.cs" />
+    <Compile Include="Entity\Progress.cs" />
+    <Compile Include="Entity\Exception.cs" />
     <Compile Include="Entity\Member.cs" />
     <Compile Include="Entity\Song.cs" />
-    <Compile Include="Entity\TokenResponse.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Entity\Response.cs" />
+    <Compile Include="Service\ProgressBar.cs" />
+    <Compile Include="Service\SongHandle.cs" />
+    <Compile Include="Views\AccountInfo.xaml.cs">
+      <DependentUpon>AccountInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListSongs.xaml.cs">
+      <DependentUpon>ListSongs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterForm.xaml.cs">
+      <DependentUpon>RegisterForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ApiHandle.cs" />
-    <Compile Include="Views\DemoGrid.xaml.cs">
-      <DependentUpon>DemoGrid.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Service\FrameSwitcher.cs" />
+    <Compile Include="Service\ExceptionHandle.cs" />
+    <Compile Include="Service\FileHandle.cs" />
     <Compile Include="Views\LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
     </Compile>
@@ -115,9 +125,6 @@
     </Compile>
     <Compile Include="Views\SongForm.xaml.cs">
       <DependentUpon>SongForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SplitView.xaml.cs">
-      <DependentUpon>SplitView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -142,13 +149,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\AccountInfo.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DemoGrid.xaml">
+    <Page Include="Views\ListSongs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegisterForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\LoginForm.xaml">
       <SubType>Designer</SubType>
@@ -162,10 +173,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SplitView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
@@ -176,6 +183,9 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="NotificationsExtensions.Win10">
+      <Version>14332.0.2</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

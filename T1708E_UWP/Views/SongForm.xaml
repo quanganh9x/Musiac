@@ -8,17 +8,19 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <ScrollViewer>
-        <StackPanel Margin="30, 0, 0, 0" x:Name="ParentStackPanel">
-            <TextBox x:Name="Name" Margin="0, 30, 0, 0" Header="Name" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="293"/>
-            <TextBox AcceptsReturn="True" x:Name="Description" Margin="0, 30, 0, 0" Header="Description" HorizontalAlignment="Left" VerticalAlignment="Top" Width="293" Height="100"/>
-            <TextBox x:Name="Singer" Margin="0, 30, 0, 0" Header="Singer" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="293"/>
-            <TextBox x:Name="Author" Margin="0, 30, 0, 0" Header="Author" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="293"/>
-            <TextBox x:Name="Link" Margin="0, 30, 0, 0" Header="Link" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="293"/>
-            <TextBox x:Name="Thumbnail" Margin="0, 30, 0, 0" Header="Thumbnail" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="293"/>
-            <Button x:Name="BtnSignup" Margin="0, 30, 0, 0" Content="Sign Up" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnSignup_Click_1"/>
-            <Button x:Name="BtnReset" Margin="0, 30, 0, 0" Content="Reset" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <MediaPlayerElement Source="https://od.lk/s/NjFfMjM4MzQ1OThf/ThangTuLaLoiNoiDoiCuaEm-HaAnhTuan-4609544.mp3" x:Name="Player"/> 
-        </StackPanel>
-    </ScrollViewer>
+    
+        <ScrollViewer>
+            <StackPanel Margin="0, 0, 0, 0" x:Name="ParentStackPanel" HorizontalAlignment="Left">
+                <TextBox x:Name="Name" Margin="0, 12, 0, 0" Header="Name" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="320"/>
+                <TextBox AcceptsReturn="True" x:Name="Description" TextWrapping="Wrap" Margin="0, 12, 0, 0" Header="Description" HorizontalAlignment="Left" VerticalAlignment="Top" Width="320" Height="100"/>
+                <TextBox x:Name="Singer" Margin="0, 12, 0, 0" Header="Singer" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="320"/>
+                <TextBox x:Name="Author" Margin="0, 12, 0, 0" Header="Author" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="320"/>
+                <TextBox x:Name="Link" Margin="0, 12, 0, 0" Header="Link" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="320"/>
+                <TextBox x:Name="Thumbnail" Margin="0, 12, 0, 0" Header="Thumbnail" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="320" TextChanged="Thumbnail_TextChanged"/>
+                <Image x:Name="ThumbSong" Width="160" Height="160" Margin="0,12,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button x:Name="BtnSignup" Margin="0, 12, 0, 0" Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnSignup_Click"/>
+            </StackPanel>
+        </ScrollViewer>
+
+
 </Page>

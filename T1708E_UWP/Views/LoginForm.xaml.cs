@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using T1708E_UWP.Entity;
+using T1708E_UWP.Service;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -27,7 +28,7 @@ namespace T1708E_UWP.Views
     /// </summary>
     public sealed partial class LoginForm : Page
     {
-        private static string API_LOGIN = "http://2-dot-backup-server-002.appspot.com/_api/v2/members/authentication";
+        private bool isChecked = true;
         public LoginForm()
         {
             this.InitializeComponent();
@@ -35,52 +36,34 @@ namespace T1708E_UWP.Views
 
         private async void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Dictionary<String, String> LoginInfor = new Dictionary<string, string>();
-            LoginInfor.Add("email", this.Email.Text);
-            LoginInfor.Add("password", this.Password.Password);
-
-            // Lay token
-            HttpClient httpClient = new HttpClient();
-            StringContent content = new StringContent(JsonConvert.SerializeObject(LoginInfor), System.Text.Encoding.UTF8, "application/json");
-            var response = httpClient.PostAsync(API_LOGIN, content).Result;
-            var responseContent = await response.Content.ReadAsStringAsync();
-            if (response.StatusCode == System.Net.HttpStatusCode.Created)
+            Dictionary<String, String> LoginInfo = new Dictionary<string, string>();
+            LoginInfo.Add("email", this.Email.Text);
+            LoginInfo.Add("password", this.Password.Password);
+            string responseContent = await ApiHandle<Dictionary<string, string>>.Call(APITypes.SignIn, LoginInfo);
+            try
             {
-                // save file...
-                Debug.WriteLine(responseContent);
-                // Doc token
-                TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(responseContent);
-
-                // Luu token
-                StorageFolder folder =  ApplicationData.Current.LocalFolder;
-                StorageFile file = await folder.CreateFileAsync("token.txt", CreationCollisionOption.ReplaceExisting);
-                await FileIO.WriteTextAsync(file, responseContent);
-
-                // Lay thong tin ca nhan bang token.
-                HttpClient client2 = new HttpClient();
-                client2.DefaultRequestHeaders.Add("Authorization", "Basic " + token.token);
-                var resp = client2.GetAsync("http://2-dot-backup-server-002.appspot.com/_api/v2/members/information").Result;
-                Debug.WriteLine(await resp.Content.ReadAsStringAsync());
-            }
-            else
-            {
-                // Xu ly loi.
-                ErrorResponse errorObject = JsonConvert.DeserializeObject<ErrorResponse>(responseContent);
-                if (errorObject != null && errorObject.error.Count > 0)
+                Response resp = JsonConvert.DeserializeObject<Response>(responseContent);
+                if (resp.token != null)
                 {
-                    foreach (var key in errorObject.error.Keys)
-                    {
-                        var textMessage = this.FindName(key);
-                        if (textMessage == null)
-                        {
-                            continue;
-                        }
-                        TextBlock textBlock = textMessage as TextBlock;
-                        textBlock.Text = errorObject.error[key];
-                        textBlock.Visibility = Visibility.Visible;
-                    }
+                    if (isChecked) await FileHandle.Save("token.ini", resp.token);
+                    Debug.WriteLine(resp.token);
+                    FrameSwitcher.Switch(typeof(Views.NavigationView));
                 }
             }
+            catch
+            {
+                ApiHandle<string>.ThrowException(responseContent);
+            }
+        }
+
+        private async void BtnSignUp_Click(object sender, RoutedEventArgs e)
+        {
+            FrameSwitcher.Switch(typeof(Views.RegisterForm));
+        }
+
+        private void CheckBox_Change(object sender, RoutedEventArgs e)
+        {
+            isChecked = !isChecked;
         }
     }
 }

@@ -1,0 +1,57 @@
+﻿<Page
+    x:Class="T1708E_UWP.Views.RegisterForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:T1708E_UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <StackPanel x:Name="ParentStackPanel" HorizontalAlignment="Center" MaxWidth="400px" Orientation="Vertical">
+            <Button x:Name="BtnBack" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Back" Click="BtnBack_Click" Width="50"/>
+            <TextBox x:Name="Email" Margin="0, 12, 0, 0" Header="Email" Text="" Width="320"/>
+            <PasswordBox x:Name="Password" Margin="0, 12, 0, 0" Header="Password" Width="320px"/>
+            <Grid HorizontalAlignment="Center" Width="320px" Margin="0,12, 0, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="FirstName" Grid.Column="0" Header="First Name" Width="155" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="LastName" Grid.Column="1" Header="Last Name" Width="155" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" Width="320px">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="160px" Margin="0, 12, 0, 0">
+
+                    <TextBox x:Name="ImageUrl" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="0" Grid.Column="0" Margin="0, 0, 0, 0" Header="Avatar Url" Width="155px" Height="150px" HorizontalAlignment="Left" VerticalAlignment="Center" TextChanged="ImageUrl_TextChanged"  />
+                    <Button Content="Capture Your Photo" Grid.Row="1" Grid.Column="0" Margin="0, 12, 0, 0" Click="Capture_Photo" HorizontalAlignment="Left" VerticalAlignment="Center" Width="155"  />
+
+                </StackPanel>
+                <Image x:Name="MyAvatar" Width="160" Height="172" Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <TextBox x:Name="Phone" Margin="0, 12, 0, 0" Header="Phone Number" Text=""  Width="320px"/>
+            <TextBox AcceptsReturn="True" x:Name="Address"  Margin="0, 12, 0, 0" TextWrapping="Wrap" Header="Address" Width="320px" Height="100"/>
+            <TextBox AcceptsReturn="True" x:Name="Introduction" Margin="0, 12, 0, 0" TextWrapping="Wrap" Header="Introduction" Width="320px" Height="100"/>
+            <TextBlock Text="Gender" Margin="0, 12, 0, 0" Width="320px" />
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="320">
+                <RadioButton Content="Male" Tag="1" Checked="Select_Gender"/>
+                <RadioButton Content="Female" Tag="0" Checked="Select_Gender"/>
+                <RadioButton Content="Other" Tag="2" Checked="Select_Gender"/>
+            </StackPanel>
+            <CalendarDatePicker x:Name="BirthDay" Header="Birthday" Margin="0, 12, 0, 0" DateChanged="Change_Birthday" Width="320px"/>
+            <Grid HorizontalAlignment="Center" Width="320px" Margin="0,12, 0, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="BtnSignup" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Sign Up" Click="Handle_Signup" Width="110"/>
+                <Button x:Name="BtnReset" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Reset" Click="BtnReset_Click" Width="110"/>
+            </Grid>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</Page>

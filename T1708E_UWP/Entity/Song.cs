@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace T1708E_UWP.Entity
 {
-    class Song
+    public class Song
     {
         private string _name;
         private string _description;

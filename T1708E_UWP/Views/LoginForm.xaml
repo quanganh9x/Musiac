@@ -8,11 +8,25 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel>
-        <TextBox x:Name="Email" Header="Email"/>
-        <TextBlock x:Name="email" Foreground="Red" Visibility="Collapsed"/>
-        <PasswordBox x:Name="Password" Header="Password"/>
-        <TextBlock x:Name="password" Foreground="Red" Visibility="Collapsed"/>
-        <Button x:Name="BtnLogin" Content="Login" Click="BtnLogin_Click"/>
+    <StackPanel HorizontalAlignment="Center" MaxWidth="400px">
+        <TextBlock Margin="0,100,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="70" Height="129"><Run Text="quanganh9x"/><LineBreak/><Run/></TextBlock>
+        <TextBox x:Name="Email" Header="Email" HorizontalAlignment="Center" Width="320" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+        <TextBlock x:Name="email" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Width="320" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+        <PasswordBox x:Name="Password" Header="Password" HorizontalAlignment="Center" Width="320" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+        <TextBlock x:Name="password" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Width="320" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+        <CheckBox Content="Remember Me ?" Margin="0,10,0,10" VerticalAlignment="Center" HorizontalAlignment="Center" Width="320" IsChecked="True" Checked="CheckBox_Change" Unchecked="CheckBox_Change"/>
+
+        <Grid HorizontalAlignment="Center" Width="320px">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="BtnLogin" Grid.Column="0" Content="Login" Click="BtnLogin_Click" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Width="110" />
+            <Button x:Name="BtnSignUp" Grid.Column="1" Content="Register" Click="BtnSignUp_Click" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center" Width="110" />
+        </Grid>
+        <HyperlinkButton Content="Forgot your password ? Click here" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+
+        <TextBlock Margin="0,60,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="18" VerticalAlignment="Stretch"><Run Text="quanganh9x"/><LineBreak/><Run/></TextBlock>
+
     </StackPanel>
 </Page>
