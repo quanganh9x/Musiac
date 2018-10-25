@@ -9,6 +9,5 @@ namespace T1708E_UWP.Entity
     {
         public int status { get; set; }
         public string message { get; set; }
-        public Dictionary<String, String> error { get; set; }
     }
 }

@@ -32,14 +32,13 @@
                 
                 
                 <NavigationView.MenuItems>
-                
-                        <NavigationViewItem Content="Home" x:Name="home" Tag="home">
-                            <NavigationViewItem.Icon>
-                                <FontIcon Glyph="&#xE10F;"/>
-                            </NavigationViewItem.Icon>
-                        </NavigationViewItem>
-                        <NavigationViewItem Icon="AllApps" Content="Account" x:Name="info" Tag="info"/>
-                        <NavigationViewItemSeparator/>
+
+                <NavigationViewItem Content="Home" x:Name="home" Tag="home">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE10F;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItemSeparator/>
                         <NavigationViewItemHeader Content="Menu"/>
                         <NavigationViewItem Icon="Audio" Content="List Songs" x:Name="listsongs" Tag="listsongs"/>
                 <NavigationViewItem Icon="Audio" Content="Add Songs" x:Name="addsongs" Tag="addsongs"/>

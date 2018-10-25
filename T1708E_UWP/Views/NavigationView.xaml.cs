@@ -40,8 +40,7 @@ namespace T1708E_UWP.Views
         // List of ValueTuple holding the Navigation Tag and the relative Navigation Page 
         private readonly IList<(string Tag, Type Page, string Title)> _pages = new List<(string Tag, Type Page, string Title)>
         {
-            
-            ("info", typeof(Views.AccountInfo), "Account Info"),
+            ("home", typeof(Views.HomePage), "Home Page"),
             ("listsongs", typeof(Views.ListSongs), "List Songs"),
             ("addsongs", typeof(Views.SongForm), "Add Songs"),
         };
@@ -52,12 +51,10 @@ namespace T1708E_UWP.Views
             NavView.Header = Title;
         }
         
-        
-
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigated += On_Navigated;
-            NavView_Navigate("info");
+            NavView_Navigate("home");
         }
 
         private void NavView_Navigate(string navItemTag)

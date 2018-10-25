@@ -101,10 +101,11 @@
     <Compile Include="Entity\Member.cs" />
     <Compile Include="Entity\Song.cs" />
     <Compile Include="Entity\Response.cs" />
+    <Compile Include="Service\Dialog.cs" />
     <Compile Include="Service\ProgressBar.cs" />
     <Compile Include="Service\SongHandle.cs" />
-    <Compile Include="Views\AccountInfo.xaml.cs">
-      <DependentUpon>AccountInfo.xaml</DependentUpon>
+    <Compile Include="Views\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ListSongs.xaml.cs">
       <DependentUpon>ListSongs.xaml</DependentUpon>
@@ -149,7 +150,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\AccountInfo.xaml">
+    <Page Include="Views\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

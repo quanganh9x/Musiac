@@ -50,17 +50,5 @@ namespace T1708E_UWP.Service
             };
             ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()));
         }
-
-        public static async void ThrowDialog(string message)
-        {
-            ContentDialog dialog = new ContentDialog
-            {
-                Title = "T1708E-UWP Exception",
-                Content = message,
-                CloseButtonText = ":)"
-            };
-
-            await dialog.ShowAsync();
-        }
     }
 }

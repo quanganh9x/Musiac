@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using T1708E_UWP.Entity;
 using T1708E_UWP.Service;
 using T1708E_UWP.Views;
@@ -33,6 +34,7 @@ namespace T1708E_UWP.Views
         
         private ObservableCollection<Song> _songs = new ObservableCollection<Song>();
         public ObservableCollection<Song> Songs { get => _songs; set => _songs = value; }
+        private int selected = 0;
         private Tooltip box = new Tooltip();
 
         public ListSongs()
@@ -42,16 +44,21 @@ namespace T1708E_UWP.Views
 
         private async void Page_Loaded(object sender, RoutedEventArgs args)
         {
+            await Load();
+
+        }
+
+        private async Task Load()
+        {
             Service.ProgressBar.SetProgress(60, true);
-            this._songs = await SongHandle.Get(false);
-            
+            if (selected == 0) this._songs = await SongHandle.Get(false);
+            else this._songs = await SongHandle.GetMine(false);
             itemListView.MaxHeight = ((Frame)Window.Current.Content).ActualHeight - listTool.ActualHeight - mediaPlayer.ActualHeight - 60; // dirty fix
-            
+            itemListView.ItemsSource = null;
             itemListView.ItemsSource = Songs; // native way to bind an observablecollection in uwp
             GC.Collect();
             Service.ProgressBar.Hide();
-
-        }
+        } 
         
 
         private void itemListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -73,20 +80,20 @@ namespace T1708E_UWP.Views
             
         }
         
-        private void AppBarButton_Click_Desktop(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void AppBarButton_Click_Custom(object sender, RoutedEventArgs e)
+        
+        private async void AppBarButton_Click_Custom(object sender, RoutedEventArgs e)
         {
             // may be affected by *sandbox-san*. please let me pass through, sandbox-san!
+            if (selected == 0)
+            await FileHandle.SaveToFile(await ApiHandle<string>.Call(APITypes.GetSongs, null));
+            else await FileHandle.SaveToFile(await ApiHandle<string>.Call(APITypes.GetSavedSongs, null));
 
         }
         
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            if (selected != Tooltip.SelectedIndex) await Load();
+            selected = Tooltip.SelectedIndex;
         }
         
     }

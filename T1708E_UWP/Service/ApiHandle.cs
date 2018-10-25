@@ -130,15 +130,28 @@ namespace T1708E_UWP.Service
                 return null;
             }
         }
+
+        public async static Task<string> CheckToken()
+        {
+            string token = await FileHandle.GetToken();
+            string response = await Call(APITypes.GetInfo, default(T));
+            try
+            {
+                Response resp = JsonConvert.DeserializeObject<Response>(response);
+                if (resp.token != null) return "true";
+                return null;
+            } catch
+            {
+                return null;
+            }
+        }
+
         public async static void ThrowException(string response)
         {
             try
             {
                 Entity.Exception errorObject = JsonConvert.DeserializeObject<Entity.Exception>(response);
-                if (errorObject != null && errorObject.error.Count > 0)
-                {
-                    ExceptionHandle.ThrowDebug(errorObject.error.Values.First().ToString());
-                }
+                ExceptionHandle.ThrowDebug(errorObject.message);
             }
             catch
             {

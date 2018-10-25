@@ -10,11 +10,11 @@
 
     <StackPanel HorizontalAlignment="Center" MaxWidth="400px">
         <TextBlock Margin="0,100,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="70" Height="129"><Run Text="quanganh9x"/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="login" Text="Sai thông tin login rùi cha nội" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Width="320" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
         <TextBox x:Name="Email" Header="Email" HorizontalAlignment="Center" Width="320" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
-        <TextBlock x:Name="email" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Width="320" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+        <TextBlock x:Name="email" Text="Email thiếu còng như đi giày không tất ?" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Width="320" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
         <PasswordBox x:Name="Password" Header="Password" HorizontalAlignment="Center" Width="320" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
-        <TextBlock x:Name="password" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Width="320" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
-        <CheckBox Content="Remember Me ?" Margin="0,10,0,10" VerticalAlignment="Center" HorizontalAlignment="Center" Width="320" IsChecked="True" Checked="CheckBox_Change" Unchecked="CheckBox_Change"/>
+        <CheckBox Content="Remember Me ?" Margin="0,10,0,10" VerticalAlignment="Center" HorizontalAlignment="Center" Width="320" IsChecked="True" x:Name="rem"/>
 
         <Grid HorizontalAlignment="Center" Width="320px">
             <Grid.ColumnDefinitions>
@@ -24,7 +24,7 @@
             <Button x:Name="BtnLogin" Grid.Column="0" Content="Login" Click="BtnLogin_Click" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Width="110" />
             <Button x:Name="BtnSignUp" Grid.Column="1" Content="Register" Click="BtnSignUp_Click" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center" Width="110" />
         </Grid>
-        <HyperlinkButton Content="Forgot your password ? Click here" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+        <HyperlinkButton NavigateUri="https://www.facebook.com/quanganh9x" Content="Forgot your password ? Click here" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
 
         <TextBlock Margin="0,60,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="18" VerticalAlignment="Stretch"><Run Text="quanganh9x"/><LineBreak/><Run/></TextBlock>
 

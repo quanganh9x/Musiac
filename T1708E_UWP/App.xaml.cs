@@ -67,7 +67,7 @@ namespace T1708E_UWP
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    if (FileHandle.Read("token.ini") != null) rootFrame.Navigate(typeof(Views.NavigationView), e.Arguments);
+                    if (ApiHandle<string>.CheckToken() != null) rootFrame.Navigate(typeof(Views.NavigationView), e.Arguments);
                     else rootFrame.Navigate(typeof(Views.LoginForm), e.Arguments);
                 }
                 // Ensure the current window is active

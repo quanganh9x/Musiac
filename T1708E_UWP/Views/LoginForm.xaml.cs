@@ -28,7 +28,6 @@ namespace T1708E_UWP.Views
     /// </summary>
     public sealed partial class LoginForm : Page
     {
-        private bool isChecked = true;
         public LoginForm()
         {
             this.InitializeComponent();
@@ -36,34 +35,54 @@ namespace T1708E_UWP.Views
 
         private async void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Dictionary<String, String> LoginInfo = new Dictionary<string, string>();
-            LoginInfo.Add("email", this.Email.Text);
-            LoginInfo.Add("password", this.Password.Password);
-            string responseContent = await ApiHandle<Dictionary<string, string>>.Call(APITypes.SignIn, LoginInfo);
-            try
+            if (CheckLogin(this.Email.Text))
             {
-                Response resp = JsonConvert.DeserializeObject<Response>(responseContent);
-                if (resp.token != null)
+                Revert();
+                Dictionary<String, String> LoginInfo = new Dictionary<string, string>();
+                LoginInfo.Add("email", this.Email.Text);
+                LoginInfo.Add("password", this.Password.Password);
+                string responseContent = await ApiHandle<Dictionary<string, string>>.Call(APITypes.SignIn, LoginInfo);
+                try
                 {
-                    if (isChecked) await FileHandle.Save("token.ini", resp.token);
-                    Debug.WriteLine(resp.token);
-                    FrameSwitcher.Switch(typeof(Views.NavigationView));
+                    Response resp = JsonConvert.DeserializeObject<Response>(responseContent);
+                    if (resp.token != null)
+                    {
+                        if (rem.IsChecked == true) await FileHandle.Save("token.ini", resp.token);
+                        FrameSwitcher.Switch(typeof(Views.NavigationView));
+                    }
+                    else
+                    {
+                        Entity.Exception err = JsonConvert.DeserializeObject<Entity.Exception>(responseContent);
+                        login.Text = err.message;
+                        login.Visibility = Visibility.Visible;
+                    }
+                }
+                catch
+                {
+                    ApiHandle<string>.ThrowException(responseContent);
+
                 }
             }
-            catch
-            {
-                ApiHandle<string>.ThrowException(responseContent);
-            }
+            else email.Visibility = Visibility.Visible;
         }
 
+        private bool CheckLogin(string email)
+        {
+            if (email.Contains("@") && email.Contains(".")) return true;
+            return false;
+        }
+
+        private void Revert()
+        {
+            if (email.Visibility == Visibility.Visible)
+            email.Visibility = Visibility.Collapsed;
+            if (login.Visibility == Visibility.Visible)
+                login.Visibility = Visibility.Collapsed;
+        }
         private async void BtnSignUp_Click(object sender, RoutedEventArgs e)
         {
             FrameSwitcher.Switch(typeof(Views.RegisterForm));
         }
-
-        private void CheckBox_Change(object sender, RoutedEventArgs e)
-        {
-            isChecked = !isChecked;
-        }
+        
     }
 }

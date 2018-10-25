@@ -26,7 +26,6 @@
                 <ComboBoxItem>My songs</ComboBoxItem>
             </ComboBox>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                <AppBarButton HorizontalAlignment="Right" Icon="Home" Label="Desktop" Click="AppBarButton_Click_Desktop"/>
                 <AppBarButton HorizontalAlignment="Right" Icon="Upload" Label="Custom" Click="AppBarButton_Click_Custom"/>
             </StackPanel>
         </Grid>

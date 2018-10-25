@@ -16,10 +16,16 @@
                 <TextBox x:Name="Singer" Margin="0, 12, 0, 0" Header="Singer" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="320"/>
                 <TextBox x:Name="Author" Margin="0, 12, 0, 0" Header="Author" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="320"/>
                 <TextBox x:Name="Link" Margin="0, 12, 0, 0" Header="Link" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="320"/>
-                <TextBox x:Name="Thumbnail" Margin="0, 12, 0, 0" Header="Thumbnail" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="320" TextChanged="Thumbnail_TextChanged"/>
-                <Image x:Name="ThumbSong" Width="160" Height="160" Margin="0,12,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <Button x:Name="BtnSignup" Margin="0, 12, 0, 0" Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnSignup_Click"/>
-            </StackPanel>
+            <TextBlock x:Name="link" Text="Link không có load được!" Foreground="Red" Margin="0,12,0,0" HorizontalAlignment="Left" Visibility="Collapsed"></TextBlock>
+
+            <TextBox x:Name="Thumbnail" Margin="0, 12, 0, 0" Header="Thumbnail" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="320" TextChanged="Thumbnail_TextChanged"/>
+            <TextBlock x:Name="thumb" Text="Ảnh không có load được!" Foreground="Red" Margin="0,12,0,0" HorizontalAlignment="Left" Visibility="Collapsed"></TextBlock>
+
+            <Image x:Name="ThumbSong" Width="160" Height="160" Margin="0,12,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button x:Name="BtnSignup" Margin="0, 12, 0, 0" Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnSignup_Click"/>
+            <TextBlock x:Name="song" Text="Lỗi: không up được nhạc" Foreground="Red" Margin="0,12,0,0" HorizontalAlignment="Left" Visibility="Collapsed"></TextBlock>
+
+        </StackPanel>
         </ScrollViewer>
 
 

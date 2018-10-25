@@ -10,7 +10,9 @@
     <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <StackPanel x:Name="ParentStackPanel" HorizontalAlignment="Center" MaxWidth="400px" Orientation="Vertical">
             <Button x:Name="BtnBack" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Back" Click="BtnBack_Click" Width="50"/>
+            <TextBlock x:Name="register" Text="Sai thông tin register rùi cha nội" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Width="320" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
             <TextBox x:Name="Email" Margin="0, 12, 0, 0" Header="Email" Text="" Width="320"/>
+            <TextBlock x:Name="email" Text="Đừng để nhắc nữa huhu. Sai email rồi" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Width="320" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
             <PasswordBox x:Name="Password" Margin="0, 12, 0, 0" Header="Password" Width="320px"/>
             <Grid HorizontalAlignment="Center" Width="320px" Margin="0,12, 0, 0">
                 <Grid.ColumnDefinitions>
@@ -30,8 +32,10 @@
                 </StackPanel>
                 <Image x:Name="MyAvatar" Width="160" Height="172" Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             </StackPanel>
-
+            <TextBlock x:Name="avatar" Text="Sai link ảnh kìa" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Width="320" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
             <TextBox x:Name="Phone" Margin="0, 12, 0, 0" Header="Phone Number" Text=""  Width="320px"/>
+            <TextBlock x:Name="phone" Text="Số gì đây ?!" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Width="320" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+
             <TextBox AcceptsReturn="True" x:Name="Address"  Margin="0, 12, 0, 0" TextWrapping="Wrap" Header="Address" Width="320px" Height="100"/>
             <TextBox AcceptsReturn="True" x:Name="Introduction" Margin="0, 12, 0, 0" TextWrapping="Wrap" Header="Introduction" Width="320px" Height="100"/>
             <TextBlock Text="Gender" Margin="0, 12, 0, 0" Width="320px" />
@@ -42,6 +46,8 @@
                 <RadioButton Content="Other" Tag="2" Checked="Select_Gender"/>
             </StackPanel>
             <CalendarDatePicker x:Name="BirthDay" Header="Birthday" Margin="0, 12, 0, 0" DateChanged="Change_Birthday" Width="320px"/>
+            <TextBox x:Name="birthday" Margin="0, 12, 0, 0" Header="Nhỏ tuổi đừng dùng :)" Text=""  Width="320px"/>
+
             <Grid HorizontalAlignment="Center" Width="320px" Margin="0,12, 0, 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
